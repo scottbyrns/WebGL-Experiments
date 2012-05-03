@@ -1,0 +1,106 @@
+Computer show me a humidity map
+(unqualified with a location, make an assumption)
+
+
+
+var Component = function () {};
+
+Component.prototype = {
+	/**
+	 * These variables will be used in logging debug messages.
+	 * These variables can be reflective, examining an object instance to describe it,
+	 * these can be literal strings, or these can be variable strings.
+	 */
+	logVariables: [
+		"Instance", function (component) {
+			return component.getName();
+		},
+		"Version", "0.0.1",
+		"Snapshot Version", "Version {Version}-SNAPSHOT"
+	],
+	events: [
+		{name: "Instance was created", description: "{Instance} was created."},
+		{name: "Instance is being destroyed", description: "{Instance} is about to be destroyed."}
+	]
+};
+
+function (when, tellEveryOne) {
+	var messageHandlers = {};
+	window[when] = function (sentence) {
+		messageHandlers[sentence.the] = messageHandlers[sentence.the] || [];
+		messageHandlers[sentence.the].push(sentence.tell);
+	};
+	window[tellEveryOne] = function (sentence) {
+		
+		var handlers = messageHandlers[sentence.that];
+		for(var handler = 0, numberOfHandlers = handlers.length; handler += 1) {
+			handlers[handler].call
+		}
+	};
+}("When", "TellEveryOne");
+var When = function (options) {
+
+}
+
+var TellEveryOne = function (options) {
+	
+}
+
+RegisterVernacular("Conversation").with({
+	"When the Conversation is started": function () {
+		Tell("Typing Handler").When({
+			the: "user typed something",
+			tell: "Typing Handler"
+		});
+	},
+	"Typing Handler": function () {
+		Get("context").of()
+		Create.a("")
+		# Create.many()
+	}
+	
+	
+});
+
+
+
+When a user types a sentence, check the context of the sentence, assign it to the thread of that context.
+
+var MultiTopicConversation = Conversation.extendedWith({
+	instanceWasCreated: function () {
+		When({
+			the: "Instance is created",
+			tell: this.theInstanceWasCreated
+		});
+		TellEveryOne({
+			that: "Instance is created"
+		});
+	},
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Natural Language Input
+
+Take a sentence as input. Decompose it into it's many parts. Ask a neural network trained to identify parts of speech to classify the many parts. Use the classifications to identify matching agents within our systems. If those agents interfaces match the remainder of the sentence then ask another neural network to classify our remaining parts of speech with respect to the agents. Identify the best match and map the sentence to the agents chained sequences of contextual inputs (e.g. "Start conversation with Joe Alan" | Conversation.start().with("Joe Alan")). Execute the code.
+

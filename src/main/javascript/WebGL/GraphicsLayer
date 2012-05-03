@@ -1,0 +1,52 @@
+var GraphicsLayer = function (canvas) {
+	var element;
+	if (typeof canvas === "string")
+	{
+		element = document.getElementById(canvas);
+	}
+	else
+	{
+		element = canvas;
+	}
+
+	this._element = element;
+
+	this._initializeGraphicsLayer();
+};
+
+function initGL(canvas) {
+    try {
+        gl = canvas.getContext("experimental-webgl");
+        gl.viewportWidth = canvas.width;
+        gl.viewportHeight = canvas.height;
+    } catch (e) {
+    }
+    if (!gl) {
+        alert("Could not initialise WebGL, sorry :-(");
+    }
+}
+
+
+GraphicsLayer.prototype = {
+	_initializeGraphicsLayer: function () {
+	
+	
+	    try {
+	        this._gl = this._canvas.getContext("experimental-webgl");
+	        this._gl.viewportWidth = canvas.width;
+	        this._gl.viewportHeight = canvas.height;
+	    } catch (e) {
+			console.warn("Failed to initialize the graphics layer.");
+			console.error(e);
+	    }
+	
+		initGL(this._element);
+	    initShaders();
+	    initBuffers();
+	},
+	
+	clearCanvas: function () {
+	    this._gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	    this._gl.enable(gl.DEPTH_TEST);
+	}
+}
